@@ -44,9 +44,8 @@
 
         <Friend />
         <Score />
-
+        <Zombie></Zombie>
         <component :is="character"></component>
-
         <text
           x="1000"
           y="930"
@@ -97,8 +96,7 @@
         </p>
       </div>
     </section>
-    <GamestateFinish :uiState="uiState" v-if="uiState === 'won' || uiState === 'lost'" class="modal">
-    </GamestateFinish>
+    <GamestateFinish :uiState="uiState" v-else class="modal"/>
   </div>
 </template>
 
@@ -157,6 +155,18 @@ export default {
       return array
     },
   },
+  watch: {
+    score (oldValue, newValue) {
+      if (this.uiState !== "start") {
+        const value = newValue + 78
+        const opacityValue = value * 100 / 78 / 100
+        gsap.to(`#${this.character}`, {
+          duration: 0.3,
+          opacity: opacityValue
+        })
+      }
+    }
+  }
 }
 </script>
 

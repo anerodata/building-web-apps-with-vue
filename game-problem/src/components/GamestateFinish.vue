@@ -17,8 +17,7 @@
         <circle class="cls-1" cx="65.5" cy="65.5" r="64" />
         <circle class="cls-2" cx="95" cy="65.8" r="7.5" />
         <circle class="cls-2" cx="36" cy="65.8" r="7.5" />
-        <path
-          class="cls3"
+        <path :class="[uiState === 'won' ? '' : 'frown', 'cls3']"
           d="M51,97s6,10,23,10S95,97,95,97"
           transform="translate(-8.5 -5.5)"
         />
@@ -28,9 +27,12 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex"
 export default {
   name: "GamestateFinish",
-  props: ["uiState"],
+  computed: {
+    ...mapState(["uiState"])
+  },
   methods: {
     resetGame() {
       this.$store.commit("resetGame")
@@ -57,5 +59,9 @@ fill: #231f20;
 .cls-3 {
 fill: none;
 stroke: #be1e2d;
+}
+.frown {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
 }
 </style>
