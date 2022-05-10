@@ -97,6 +97,8 @@
         </p>
       </div>
     </section>
+    <GamestateFinish :uiState="uiState" v-if="uiState === 'won' || uiState === 'lost'" class="modal">
+    </GamestateFinish>
   </div>
 </template>
 
@@ -111,6 +113,7 @@ import Artist from "@/components/Artist.vue"
 import Zombie from "@/components/Zombie.vue"
 import Mechanic from "@/components/Mechanic.vue"
 import GamestateStart from "@/components/GamestateStart.vue"
+import GamestateFinish from "@/components/GamestateFinish.vue"
 
 export default {
   components: {
@@ -121,6 +124,7 @@ export default {
     Zombie,
     Mechanic,
     GamestateStart,
+    GamestateFinish
   },
   data() {
     return {
