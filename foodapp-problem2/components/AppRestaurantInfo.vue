@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     priceFormatting(item) {
+      console.log(this.datasource)
       return "$" + item.toFixed(2);
     },
   },

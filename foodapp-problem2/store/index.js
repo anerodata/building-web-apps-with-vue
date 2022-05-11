@@ -22,6 +22,7 @@ export const actions = {
     if (state.fooddata.length) return;
 
     try {
+      console.log(process.env.AWS_API_KEY)
       await fetch(
           "https://dva9vm8f1h.execute-api.us-east-2.amazonaws.com/production/restaurants", {
             headers: {
@@ -32,6 +33,7 @@ export const actions = {
         )
         .then(response => response.json())
         .then(data => {
+          console.log(data)
           commit("updateFoodData", data);
         });
     } catch (err) {
