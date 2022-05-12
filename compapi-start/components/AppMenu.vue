@@ -4,6 +4,9 @@
       <li>
         <nuxt-link exact to="/">Home</nuxt-link>
       </li>
+      <li>
+        <nuxt-link exact to="/rappers">Rappers</nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
